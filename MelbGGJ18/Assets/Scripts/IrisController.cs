@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour 
+public class IrisController : MonoBehaviour 
 {
-	public GameObject currentCam;
+	//public GameObject currentCam;
 	public GameObject irisCircle;
 	private Transform targetPos;
 
@@ -16,13 +16,13 @@ public class CameraController : MonoBehaviour
 	private float startIrisScale;
 	public float irisMod;
 
-	float speed = 10.0f;
+	//float speed = 10.0f;
 
-	public float speedH = 2.0f;
-	public float speedV = 2.0f;
+	//public float speedH = 2.0f;
+	//public float speedV = 2.0f;
 
-	private float yaw = 0.0f;
-	private float pitch = 0.0f;
+	//private float yaw = 0.0f;
+	//private float pitch = 0.0f;
 
 	// Use this for initialization
 	void Start () 
@@ -40,10 +40,10 @@ public class CameraController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		yaw += speedH * Input.GetAxis("Mouse X");
-		pitch -= speedV * Input.GetAxis("Mouse Y");
+		//yaw += speedH * Input.GetAxis("Mouse X");
+		//pitch -= speedV * Input.GetAxis("Mouse Y");
 
-		transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+		//transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 		RayCaster ();
 		if (Input.GetAxis ("Mouse X") > 0f || Input.GetAxis ("Mouse Y") > 0f) 
 		{
