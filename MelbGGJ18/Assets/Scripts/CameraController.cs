@@ -69,7 +69,7 @@ public class CameraController : MonoBehaviour
 				irisCircle.transform.localScale = irisCircle.transform.localScale * irisMod;
 			}
 		}
-		Debug.Log (Vector3.Distance (hit.point, targetPos.position));
+//		Debug.Log (Vector3.Distance (hit.point, targetPos.position));
 		lastCastHit = hit.point;
 	}
 	public void RayCaster()

@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 	public float walkSpeed;
 	public float turnSpeed;
 
+	public Color newColor;
+
 	public Image distMarker;
 
 	[SerializeField]
@@ -24,8 +26,7 @@ public class PlayerController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () 
-	{
-		targetDistance = Vector3.Distance(transform.position, target.transform.position);		
+	{		
 		ProximitySensor ();
 		Movement ();
 	}
@@ -51,7 +52,12 @@ public class PlayerController : MonoBehaviour
 	}
 	public void ProximitySensor()
 	{
-//		distMarker.sprite targetDistance * 0.1f;
-//		Debug.Log (targetDistance * 0.1f);
+		if ((transform.position - target.transform.position).magnitude < 100f) 
+		{
+			targetDistance = (transform.position - target.transform.position).magnitude;
+			distMarker.color = new Color(distMarker.color.r,distMarker.color.g,distMarker.color.b, 1 - (targetDistance*0.1f));
+			Debug.Log (distMarker.color.ToString());
+		}
+
 	}
 }
