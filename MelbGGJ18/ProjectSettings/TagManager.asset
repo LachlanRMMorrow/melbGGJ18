@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Target
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,13 @@ TagManager:
   - UI
   - 
   - 
+<<<<<<< HEAD
   - CamBarrier
   - Targets
+=======
+  - RaycastIgnore
+  - 
+>>>>>>> 0b32850da41bd109904ec38658c099dd133d0a19
   - 
   - 
   - 
