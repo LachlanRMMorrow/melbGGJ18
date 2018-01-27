@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 
 	public Color newColor;
 
+	public GameObject winScreen;
+
 	public Image distMarker;
 
 	[SerializeField]
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		winScreen.SetActive (false);
 		target = GameObject.FindGameObjectWithTag ("Target");
 		distMarker = GameObject.FindGameObjectWithTag ("DistanceMarker").GetComponent<Image>();
 	}
@@ -29,17 +32,20 @@ public class PlayerController : MonoBehaviour
 	{		
 		ProximitySensor ();
 		Movement ();
+		PickupDiamond ();
 	}
 
 	public void Movement()
 	{
 		if (Input.GetKey (KeyCode.W)) 
 		{
-			transform.position += transform.forward * walkSpeed;
+			gameObject.GetComponent<Rigidbody> ().AddForce (transform.forward*walkSpeed);
+//			transform.position += transform.forward * walkSpeed;
 		}
 		if (Input.GetKey (KeyCode.S)) 
 		{
-			transform.position += -transform.forward * walkSpeed;
+			gameObject.GetComponent<Rigidbody> ().AddForce (-transform.forward*walkSpeed);
+//			transform.position += -transform.forward * walkSpeed;
 		}
 		if (Input.GetKey (KeyCode.A)) 
 		{
@@ -48,6 +54,11 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey (KeyCode.D)) 
 		{
 			transform.Rotate(0,turnSpeed,0);
+		}
+		if (Input.GetKey (KeyCode.W) == false && Input.GetKey (KeyCode.S) == false && Input.GetKey (KeyCode.A) == false && Input.GetKey (KeyCode.D) == false)
+		{
+			gameObject.GetComponent<Rigidbody> ().velocity += -gameObject.GetComponent<Rigidbody> ().velocity;
+			gameObject.GetComponent<Rigidbody> ().angularVelocity += -gameObject.GetComponent<Rigidbody> ().angularVelocity;
 		}
 	}
 	public void ProximitySensor()
@@ -59,5 +70,13 @@ public class PlayerController : MonoBehaviour
 			//Debug.Log (distMarker.color.ToString());
 		}
 
+	}
+	public void PickupDiamond()
+	{
+		if (Vector3.Distance (transform.position, target.transform.position) < 1f && Input.GetKey(KeyCode.Space)) 
+		{
+			target.SetActive (false);
+			winScreen.SetActive (true);
+		}
 	}
 }
