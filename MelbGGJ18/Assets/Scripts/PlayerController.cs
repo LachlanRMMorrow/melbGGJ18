@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 
 	public Color newColor;
 
+	public GameObject winScreen;
+
 	public Image distMarker;
 
 	[SerializeField]
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		winScreen.SetActive (false);
 		target = GameObject.FindGameObjectWithTag ("Target");
 		distMarker = GameObject.FindGameObjectWithTag ("DistanceMarker").GetComponent<Image>();
 	}
@@ -29,6 +32,7 @@ public class PlayerController : MonoBehaviour
 	{		
 		ProximitySensor ();
 		Movement ();
+		PickupDiamond ();
 	}
 
 	public void Movement()
@@ -59,5 +63,13 @@ public class PlayerController : MonoBehaviour
 			//Debug.Log (distMarker.color.ToString());
 		}
 
+	}
+	public void PickupDiamond()
+	{
+		if (Vector3.Distance (transform.position, target.transform.position) < 1f && Input.GetKey(KeyCode.Space)) 
+		{
+			target.SetActive (false);
+			winScreen.SetActive (true);
+		}
 	}
 }
