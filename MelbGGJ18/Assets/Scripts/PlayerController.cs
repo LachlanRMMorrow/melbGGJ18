@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
 	}
 	public void PickupDiamond()
 	{
-		if (Vector3.Distance (transform.position, target.transform.position) < 1f && Input.GetKey(KeyCode.Space)) 
+		if (Vector3.Distance (transform.position, target.transform.position) < 3f && Input.GetKey(KeyCode.Space)) 
 		{
 			target.SetActive (false);
 			winScreen.SetActive (true);
