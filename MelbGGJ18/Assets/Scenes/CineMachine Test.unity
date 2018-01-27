@@ -461,12 +461,12 @@ MonoBehaviour:
   m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 10
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
+  m_HorizontalDamping: 0
+  m_VerticalDamping: 0
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_DeadZoneWidth: 0.1
-  m_DeadZoneHeight: 0.1
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
@@ -2066,7 +2066,6 @@ GameObject:
   - component: {fileID: 739791238}
   - component: {fileID: 739791236}
   - component: {fileID: 739791237}
-  - component: {fileID: 739791240}
   m_Layer: 0
   m_Name: CameraController
   m_TagString: Untagged
@@ -2107,6 +2106,7 @@ MonoBehaviour:
   - {fileID: 2136512864}
   - {fileID: 801677711}
   - {fileID: 1346742107}
+  irisController: {fileID: 1957233888}
   speed: 10
   curTarget: {fileID: 0}
 --- !u!95 &739791238
@@ -2139,20 +2139,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &739791240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 739791235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a04097a186fa36449d5196afd3a2467, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  irisCircle: {fileID: 21561211}
-  irisScale: {x: 4, y: 4, z: 4}
-  irisMod: 0
 --- !u!1 &774091172
 GameObject:
   m_ObjectHideFlags: 0
@@ -3344,7 +3330,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1152563494}
-  m_LocalRotation: {x: -0, y: 0.9906313, z: -0.1365639, w: 0}
+  m_LocalRotation: {x: 0.0000000055525082, y: 0.9906313, z: -0.13656391, w: 0.000000034589103}
   m_LocalPosition: {x: 0, y: 5.34, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5645,8 +5631,8 @@ MonoBehaviour:
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_DeadZoneWidth: 0.1
-  m_DeadZoneHeight: 0.1
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
@@ -5978,8 +5964,8 @@ MonoBehaviour:
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_DeadZoneWidth: 0.1
-  m_DeadZoneHeight: 0.1
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
@@ -6008,6 +5994,7 @@ GameObject:
   - component: {fileID: 1957233889}
   - component: {fileID: 1957233894}
   - component: {fileID: 1957233893}
+  - component: {fileID: 1957233895}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6071,7 +6058,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1957233888}
-  m_LocalRotation: {x: 0, y: 0.9906313, z: -0.1365639, w: 0}
+  m_LocalRotation: {x: 0.0000000055525082, y: 0.9906313, z: -0.13656391, w: 0.000000034589103}
   m_LocalPosition: {x: 0, y: 5.34, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -6120,6 +6107,20 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Cinemachine.CinemachineBrain+VcamEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1957233895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1957233888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a04097a186fa36449d5196afd3a2467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  irisCircle: {fileID: 21561211}
+  irisScale: {x: 4, y: 4, z: 4}
+  irisMod: 0
 --- !u!1 &1989236724
 GameObject:
   m_ObjectHideFlags: 0
@@ -6426,8 +6427,8 @@ MonoBehaviour:
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_DeadZoneWidth: 0.1
-  m_DeadZoneHeight: 0.1
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
