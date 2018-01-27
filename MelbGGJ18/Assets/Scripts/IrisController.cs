@@ -16,14 +16,6 @@ public class IrisController : MonoBehaviour
 	private float startIrisScale;
 	public float irisMod;
 
-	//float speed = 10.0f;
-
-	//public float speedH = 2.0f;
-	//public float speedV = 2.0f;
-
-	//private float yaw = 0.0f;
-	//private float pitch = 0.0f;
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -39,19 +31,11 @@ public class IrisController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		//yaw += speedH * Input.GetAxis("Mouse X");
-		//pitch -= speedV * Input.GetAxis("Mouse Y");
-
-		//transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 		RayCaster ();
 		if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.RightArrow)) 
 		{
 			IrisScaler ();
 		}
-//		if (Input.GetAxis ("Mouse X") > 0f || Input.GetAxis ("Mouse Y") > 0f) 
-//		{
-//			
-//		}
 	}
 	public void IrisScaler ()
 	{
@@ -72,7 +56,6 @@ public class IrisController : MonoBehaviour
 				irisCircle.transform.localScale = irisCircle.transform.localScale * irisMod;
 			}
 		}
-//		Debug.Log (hit.point.ToString());
 		lastCastHit = hit.point;
 	}
 	public void RayCaster()
@@ -84,6 +67,5 @@ public class IrisController : MonoBehaviour
 
 		Debug.Log (Vector3.Distance (hit.point, targetPos.position));
 		Debug.Log (hit.collider.gameObject);
-
 	}
 }
