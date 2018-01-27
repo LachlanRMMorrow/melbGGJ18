@@ -44,7 +44,10 @@ public class IrisController : MonoBehaviour
 
 		//transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 		RayCaster ();
-//		IrisScaler ();
+		if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.RightArrow)) 
+		{
+			IrisScaler ();
+		}
 //		if (Input.GetAxis ("Mouse X") > 0f || Input.GetAxis ("Mouse Y") > 0f) 
 //		{
 //			
@@ -57,7 +60,7 @@ public class IrisController : MonoBehaviour
 		{
 			if(irisCircle.transform.localScale.x > 0.2f)
 			{
-				irisMod = 0.9f;
+				irisMod = 0.99f;
 				irisCircle.transform.localScale = irisCircle.transform.localScale * irisMod;
 			}
 		}
@@ -65,18 +68,22 @@ public class IrisController : MonoBehaviour
 		{
 			if (irisCircle.transform.localScale.x < 10f) 
 			{
-				irisMod = 1.1f;
+				irisMod = 1.01f;
 				irisCircle.transform.localScale = irisCircle.transform.localScale * irisMod;
 			}
 		}
-		Debug.Log (hit.point.ToString());
+//		Debug.Log (hit.point.ToString());
 		lastCastHit = hit.point;
 	}
 	public void RayCaster()
 	{
-		Vector3 fwd = transform.TransformDirection (Vector3.forward);
+		Vector3 fwd = transform.TransformDirection (Vector3.forward*100);
 
-		Physics.Raycast (this.transform.position, fwd, out hit, 999f);
-//		Debug.DrawRay (this.transform.position, fwd, 999f);
+		Physics.Raycast (this.transform.position, fwd, out hit,999f);
+		Debug.DrawRay (this.transform.position, fwd, Color.black,1f,false);
+
+		Debug.Log (Vector3.Distance (hit.point, targetPos.position));
+		Debug.Log (hit.collider.gameObject);
+
 	}
 }
