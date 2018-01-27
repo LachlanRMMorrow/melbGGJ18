@@ -7,7 +7,7 @@ public class IrisController : MonoBehaviour
 {
 	//public GameObject currentCam;
 	public Image irisCircle;
-	private Transform targetPos;
+	public Transform targetPos;
 
 	private RaycastHit hit;
 
@@ -23,30 +23,30 @@ public class IrisController : MonoBehaviour
 		Cursor.lockState = CursorLockMode.Locked;
 		//Cursor.visible = false;
 		RaycastHit lastHit;
-		Physics.Raycast (this.transform.position, transform.TransformDirection(Vector3.forward), out lastHit,2);
+		Physics.Raycast (this.transform.position, transform.TransformDirection(Vector3.forward), out lastHit);
 		lastCastHit = lastHit.point;
 	}
 	
 	// Update is called once per frame
 	void Update () 
-	{
+	{        
 		RayCaster ();
 		IrisScaler ();
 	}
 	public void IrisScaler ()
-	{
+	{    
         float temp = Vector3.Distance(hit.point, targetPos.position);
 
         irisCircle.rectTransform.localScale = new Vector3(Mathf.Clamp(irisScale * temp * 1.0f,irisScale,irisMax), 
             Mathf.Clamp((irisScale * temp * 1.0f), irisScale, irisMax), 
             1);
-	}
+    }
 
 	public void RayCaster()
 	{
 		Vector3 fwd = transform.TransformDirection (Vector3.forward*100);
 
-		Physics.Raycast (this.transform.position, fwd, out hit,999f,2);
+		Physics.Raycast (this.transform.position, fwd, out hit,999f);
 		Debug.DrawRay (this.transform.position, fwd, Color.black,1f,false);
 
 		//Debug.Log (Vector3.Distance (hit.point, targetPos.position));

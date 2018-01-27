@@ -1873,6 +1873,8 @@ MonoBehaviour:
   transitionTime: 0.5
   transitionImage: {fileID: 471025038}
   Reticle: {fileID: 694975950}
+  transitionSound: {fileID: 0}
+  audioSource: {fileID: 617633142}
   postProProfile: {fileID: 11400000, guid: a0881ce768923404388186567b828fab, type: 2}
   anim: {fileID: 739791238}
 --- !u!114 &739791237
@@ -5367,6 +5369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   irisCircle: {fileID: 694975950}
+  targetPos: {fileID: 0}
   irisScale: 0.3
   irisMax: 1.5
 --- !u!1 &1973501481

@@ -13,11 +13,25 @@ public class CameraSelection : MonoBehaviour {
     public float transitionTime;
     public Image transitionImage;
     public Image Reticle;
+    public AudioClip transitionSound;
+    public AudioSource audioSource;
 
     public PostProcessingProfile postProProfile;
 
     public Animator anim;
 	
+    void Start()
+    {
+        //Recticle Activate
+        Reticle.gameObject.SetActive(true);
+        //Grey Reset
+        transitionImage.gameObject.SetActive(false);
+        //Grain Reset
+        GrainModel.Settings grainSettings = postProProfile.grain.settings;
+        grainSettings.intensity = grainLevel;
+        postProProfile.grain.settings = grainSettings;
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -48,6 +62,9 @@ public class CameraSelection : MonoBehaviour {
 
     void Transition()
     {
+
+        float rndm = Random.Range(0.75f, 1.0f);
+
         //Grain Activate
         GrainModel.Settings grainSettings = postProProfile.grain.settings;
         grainSettings.intensity = 1;
@@ -55,7 +72,10 @@ public class CameraSelection : MonoBehaviour {
         //Grey Activate
         transitionImage.gameObject.SetActive(true);
         //Reticle Reset
-        Reticle.gameObject.SetActive(false);  
+        Reticle.gameObject.SetActive(false);
+        //Transition Sound
+        audioSource.pitch = rndm;
+        audioSource.PlayOneShot(transitionSound, 0.75f);
     }
 
 
@@ -71,6 +91,8 @@ public class CameraSelection : MonoBehaviour {
         GrainModel.Settings grainSettings = postProProfile.grain.settings;
         grainSettings.intensity = grainLevel;
         postProProfile.grain.settings = grainSettings;
+        //Transition Sound Stop
+        audioSource.Stop();
     }
 
 }
