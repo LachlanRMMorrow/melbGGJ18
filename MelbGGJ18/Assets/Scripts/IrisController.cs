@@ -29,7 +29,11 @@ public class IrisController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () 
-	{        
+	{
+		if (targetPos == null) 
+		{
+			targetPos = GameObject.FindGameObjectWithTag ("Target").GetComponent<Transform> ();
+		}
 		RayCaster ();
 		IrisScaler ();
 	}

@@ -36,6 +36,10 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{	
+		if (target == null) 
+		{
+			target = GameObject.FindGameObjectWithTag ("Target");
+		}
 		if (isWalking == true) 
 		{
 			myAnimator.SetBool ("IsWalking", true);
