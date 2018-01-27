@@ -55,6 +55,11 @@ public class PlayerController : MonoBehaviour
 		{
 			transform.Rotate(0,turnSpeed,0);
 		}
+		if (Input.GetKey (KeyCode.W) == false && Input.GetKey (KeyCode.S) == false && Input.GetKey (KeyCode.A) == false && Input.GetKey (KeyCode.D) == false)
+		{
+			gameObject.GetComponent<Rigidbody> ().velocity += -gameObject.GetComponent<Rigidbody> ().velocity;
+			gameObject.GetComponent<Rigidbody> ().angularVelocity += -gameObject.GetComponent<Rigidbody> ().angularVelocity;
+		}
 	}
 	public void ProximitySensor()
 	{
