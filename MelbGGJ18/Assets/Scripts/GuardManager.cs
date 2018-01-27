@@ -17,6 +17,6 @@ public class GuardManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-//		gameObject.GetComponent<NavMeshAgent>()
+//		gameObject.GetComponent<NavMeshAgent>().destination = 
 	}
 }
