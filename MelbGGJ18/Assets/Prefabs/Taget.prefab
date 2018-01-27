@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33476886074547790}
   - component: {fileID: 65227230961575548}
   - component: {fileID: 23408529615862412}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Taget
   m_TagString: Target
   m_Icon: {fileID: 0}
@@ -35,13 +35,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1460896288994896}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17, y: 2.109, z: 1.02}
+  m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 10.170001, y: 0.110000014, z: -13.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
 --- !u!23 &23408529615862412
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -82,7 +82,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1460896288994896}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: bee2bd61f71b8fd428dd7cfc4b168f7b, type: 3}
 --- !u!65 &65227230961575548
 BoxCollider:
   m_ObjectHideFlags: 1

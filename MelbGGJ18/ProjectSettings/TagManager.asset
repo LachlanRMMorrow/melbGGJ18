@@ -16,8 +16,8 @@ TagManager:
   - UI
   - 
   - 
-  - IgnoreRaycast
-  - 
+  - Barriers
+  - CamTargets
   - 
   - 
   - 

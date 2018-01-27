@@ -5,7 +5,6 @@ using UnityEngine;
 public class CameraTarget : MonoBehaviour {
 
     public GameObject[] targets;
-    public GameObject irisController;
 
     public float speed = 10;
 
@@ -31,25 +30,25 @@ public class CameraTarget : MonoBehaviour {
 
     void CheckTarget()
     {
-        //North
+        //Camera1
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             curTarget.GetComponent<Rigidbody>().velocity = Vector3.zero;
             curTarget = targets[0];
         }
-        //South
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        //Camera2
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             curTarget.GetComponent<Rigidbody>().velocity = Vector3.zero;
             curTarget = targets[1];
         }
-        //East
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        //Camera3
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             curTarget.GetComponent<Rigidbody>().velocity = Vector3.zero;
             curTarget = targets[2];
         }
-        //West
+        //Camera4
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             curTarget.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -59,7 +58,7 @@ public class CameraTarget : MonoBehaviour {
 
     void MoveTarget()
     {
-        //North
+        //Camera1
         if(curTarget == targets[0])
         {
             float moveHorizontal = Input.GetAxis("Horizontal");
@@ -67,51 +66,20 @@ public class CameraTarget : MonoBehaviour {
             Vector3 movement = new Vector3(-moveHorizontal, moveVerticle, 0.0f);
             
             curTarget.GetComponent<Rigidbody>().velocity = (movement * speed);
-
-            //Check if moving
-            if (curTarget.GetComponent<Rigidbody>().velocity.x > 0 ||
-                curTarget.GetComponent<Rigidbody>().velocity.y > 0 ||
-                curTarget.GetComponent<Rigidbody>().velocity.z > 0)
-            {
-                irisController.GetComponent<IrisController>().IrisScaler();
-            }
+            
         }
-        //South
+        //Camera2
         else if(curTarget == targets[1])
-        {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVerticle = Input.GetAxis("Vertical");
-            Vector3 movement = new Vector3(moveHorizontal, moveVerticle, 0.0f);
-
-            curTarget.GetComponent<Rigidbody>().velocity = (movement * speed);
-
-            //Check if moving
-            if (curTarget.GetComponent<Rigidbody>().velocity.x > 0 ||
-                curTarget.GetComponent<Rigidbody>().velocity.y > 0 ||
-                curTarget.GetComponent<Rigidbody>().velocity.z > 0)
-            {
-                irisController.GetComponent<IrisController>().IrisScaler();
-            }
-        }
-        //East
-        else if(curTarget == targets[2])
         {
             float moveHorizontal = Input.GetAxis("Horizontal");
             float moveVerticle = Input.GetAxis("Vertical");
             Vector3 movement = new Vector3(0.0f, moveVerticle, -moveHorizontal);
 
             curTarget.GetComponent<Rigidbody>().velocity = (movement * speed);
-
-            //Check if moving
-            if (curTarget.GetComponent<Rigidbody>().velocity.x > 0 ||
-                curTarget.GetComponent<Rigidbody>().velocity.y > 0 ||
-                curTarget.GetComponent<Rigidbody>().velocity.z > 0)
-            {
-                irisController.GetComponent<IrisController>().IrisScaler();
-            }
+                       
         }
-        //West
-        else if (curTarget == targets[3])
+        //Camera3
+        else if(curTarget == targets[2])
         {
             float moveHorizontal = Input.GetAxis("Horizontal");
             float moveVerticle = Input.GetAxis("Vertical");
@@ -119,13 +87,16 @@ public class CameraTarget : MonoBehaviour {
 
             curTarget.GetComponent<Rigidbody>().velocity = (movement * speed);
 
-            //Check if moving
-            if (curTarget.GetComponent<Rigidbody>().velocity.x > 0 ||
-                curTarget.GetComponent<Rigidbody>().velocity.y > 0 ||
-                curTarget.GetComponent<Rigidbody>().velocity.z > 0)
-            {
-                irisController.GetComponent<IrisController>().IrisScaler();
-            }
+        }
+        //Camera4
+        else if (curTarget == targets[3])
+        {
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVerticle = Input.GetAxis("Vertical");
+            Vector3 movement = new Vector3(0.0f, moveVerticle, -moveHorizontal);
+
+            curTarget.GetComponent<Rigidbody>().velocity = (movement * speed);
+
         }
     }
 }

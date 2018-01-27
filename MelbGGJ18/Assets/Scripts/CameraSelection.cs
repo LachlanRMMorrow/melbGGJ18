@@ -12,16 +12,11 @@ public class CameraSelection : MonoBehaviour {
     
     public float transitionTime;
     public Image transitionImage;
+    public Image Reticle;
 
     public PostProcessingProfile postProProfile;
 
     public Animator anim;
-
-	// Use this for initialization
-	void Start ()
-    {
-
-	}
 	
 	// Update is called once per frame
 	void Update ()
@@ -30,24 +25,24 @@ public class CameraSelection : MonoBehaviour {
         {
             Transition();
             StartCoroutine(ResetGrain(transitionTime));
-            anim.SetTrigger("North");
+            anim.SetTrigger("Camera1");
         }else if(Input.GetKeyDown(KeyCode.Alpha2))
         {
             Transition();
             StartCoroutine(ResetGrain(transitionTime));
-            anim.SetTrigger("East");
+            anim.SetTrigger("Camera2");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Transition();
             StartCoroutine(ResetGrain(transitionTime));
-            anim.SetTrigger("South");
+            anim.SetTrigger("Camera3");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             Transition();
             StartCoroutine(ResetGrain(transitionTime));
-            anim.SetTrigger("West");
+            anim.SetTrigger("Camera4");
         }
     }
 
@@ -58,7 +53,9 @@ public class CameraSelection : MonoBehaviour {
         grainSettings.intensity = 1;
         postProProfile.grain.settings = grainSettings;
         //Grey Activate
-        transitionImage.gameObject.SetActive(true);    
+        transitionImage.gameObject.SetActive(true);
+        //Reticle Reset
+        Reticle.gameObject.SetActive(false);  
     }
 
 
@@ -66,6 +63,8 @@ public class CameraSelection : MonoBehaviour {
     {
         //Wait
         yield return new WaitForSeconds(waitTime);
+        //Recticle Activate
+        Reticle.gameObject.SetActive(true);
         //Grey Reset
         transitionImage.gameObject.SetActive(false);
         //Grain Reset

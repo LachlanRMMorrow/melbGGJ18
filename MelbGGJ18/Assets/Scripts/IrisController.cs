@@ -13,7 +13,8 @@ public class IrisController : MonoBehaviour
 
 	private Vector3 lastCastHit;
 
-	public Vector3 irisScale;
+	public float irisScale;
+    public float irisMax;
 
 	// Use this for initialization
 	void Start () 
@@ -36,7 +37,9 @@ public class IrisController : MonoBehaviour
 	{
         float temp = Vector3.Distance(hit.point, targetPos.position);
 
-        irisCircle.rectTransform.localScale = irisScale * temp * 1f;
+        irisCircle.rectTransform.localScale = new Vector3(Mathf.Clamp(irisScale * temp * 1.0f,irisScale,irisMax), 
+            Mathf.Clamp((irisScale * temp * 1.0f), irisScale, irisMax), 
+            1);
 	}
 
 	public void RayCaster()
