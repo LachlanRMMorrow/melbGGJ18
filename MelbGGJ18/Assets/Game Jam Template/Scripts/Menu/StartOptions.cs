@@ -21,6 +21,9 @@ public class StartOptions : MonoBehaviour {
 	[HideInInspector] public bool inMainMenu = true;					//If true, pause button disabled in main menu (Cancel in input manager, default escape key)
 	[HideInInspector] public AnimationClip fadeAlphaAnimationClip;		//Animation clip fading out UI elements alpha
 
+    public AudioClip startSound;
+    [SerializeField]
+    private AudioSource audioSource;
 
 	private PlayMusic playMusic;										//Reference to PlayMusic script
 	private float fastFadeIn = .01f;									//Very short fade time (10 milliseconds) to start playing music immediately without a click/glitch
@@ -45,6 +48,8 @@ public class StartOptions : MonoBehaviour {
 
 	public void StartButtonClicked()
 	{
+        audioSource.PlayOneShot(startSound, 1);
+
 		SceneManager.LoadScene (sceneToStart);
 		//If changeMusicOnStart is true, fade out volume of music group of AudioMixer by calling FadeDown function of PlayMusic
 		//To change fade time, change length of animation "FadeToColor"
