@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 		{
 			targetDistance = (transform.position - target.transform.position).magnitude;
 			distMarker.color = new Color(distMarker.color.r,distMarker.color.g,distMarker.color.b, 1 - (targetDistance*0.1f));
-			Debug.Log (distMarker.color.ToString());
+			//Debug.Log (distMarker.color.ToString());
 		}
 
 	}
