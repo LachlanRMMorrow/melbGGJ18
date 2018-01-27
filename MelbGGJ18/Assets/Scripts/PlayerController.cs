@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
 	public float walkSpeed;
 	public float turnSpeed;
 
+	public bool isWalking;
+
+	private Animator myAnimator;
+
 	public Color newColor;
 
 	public GameObject winScreen;
@@ -22,6 +26,8 @@ public class PlayerController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		myAnimator = this.gameObject.GetComponent<Animator> ();
+		isWalking = false;
 		winScreen.SetActive (false);
 		target = GameObject.FindGameObjectWithTag ("Target");
 		distMarker = GameObject.FindGameObjectWithTag ("DistanceMarker").GetComponent<Image>();
@@ -29,7 +35,15 @@ public class PlayerController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () 
-	{		
+	{	
+		if (isWalking == true) 
+		{
+			myAnimator.SetBool ("IsWalking", true);
+		} 
+		else 
+		{
+			myAnimator.SetBool ("IsWalking", false);
+		}
 		ProximitySensor ();
 		Movement ();
 		PickupDiamond ();
@@ -39,11 +53,13 @@ public class PlayerController : MonoBehaviour
 	{
 		if (Input.GetKey (KeyCode.W)) 
 		{
+			isWalking = true;
 			gameObject.GetComponent<Rigidbody> ().AddForce (transform.forward*walkSpeed);
 //			transform.position += transform.forward * walkSpeed;
 		}
 		if (Input.GetKey (KeyCode.S)) 
 		{
+			isWalking = true;
 			gameObject.GetComponent<Rigidbody> ().AddForce (-transform.forward*walkSpeed);
 //			transform.position += -transform.forward * walkSpeed;
 		}
@@ -57,6 +73,7 @@ public class PlayerController : MonoBehaviour
 		}
 		if (Input.GetKey (KeyCode.W) == false && Input.GetKey (KeyCode.S) == false && Input.GetKey (KeyCode.A) == false && Input.GetKey (KeyCode.D) == false)
 		{
+			isWalking = false;
 			gameObject.GetComponent<Rigidbody> ().velocity += -gameObject.GetComponent<Rigidbody> ().velocity;
 			gameObject.GetComponent<Rigidbody> ().angularVelocity += -gameObject.GetComponent<Rigidbody> ().angularVelocity;
 		}
@@ -73,7 +90,7 @@ public class PlayerController : MonoBehaviour
 	}
 	public void PickupDiamond()
 	{
-		if (Vector3.Distance (transform.position, target.transform.position) < 1f && Input.GetKey(KeyCode.Space)) 
+		if (Vector3.Distance (transform.position, target.transform.position) < 3f && Input.GetKey(KeyCode.Space)) 
 		{
 			target.SetActive (false);
 			winScreen.SetActive (true);

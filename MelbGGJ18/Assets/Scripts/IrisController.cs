@@ -23,7 +23,7 @@ public class IrisController : MonoBehaviour
 		Cursor.lockState = CursorLockMode.Locked;
 		//Cursor.visible = false;
 		RaycastHit lastHit;
-		Physics.Raycast (this.transform.position, transform.TransformDirection(Vector3.forward), out lastHit,8);
+		Physics.Raycast (this.transform.position, transform.TransformDirection(Vector3.forward), out lastHit,2);
 		lastCastHit = lastHit.point;
 	}
 	
@@ -46,7 +46,7 @@ public class IrisController : MonoBehaviour
 	{
 		Vector3 fwd = transform.TransformDirection (Vector3.forward*100);
 
-		Physics.Raycast (this.transform.position, fwd, out hit,999f);
+		Physics.Raycast (this.transform.position, fwd, out hit,999f,2);
 		Debug.DrawRay (this.transform.position, fwd, Color.black,1f,false);
 
 		//Debug.Log (Vector3.Distance (hit.point, targetPos.position));
