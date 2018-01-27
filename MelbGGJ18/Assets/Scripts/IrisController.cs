@@ -73,7 +73,7 @@ public class IrisController : MonoBehaviour
 		lastCastHit = hit.point;
 	}
 	public void RayCaster()
-	{
+	{        
 		Vector3 fwd = transform.TransformDirection (Vector3.forward);
 
 		Physics.Raycast (this.transform.position, fwd, out hit, 999f);
