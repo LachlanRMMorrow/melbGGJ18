@@ -39,11 +39,13 @@ public class PlayerController : MonoBehaviour
 	{
 		if (Input.GetKey (KeyCode.W)) 
 		{
-			transform.position += transform.forward * walkSpeed;
+			gameObject.GetComponent<Rigidbody> ().AddForce (transform.forward*walkSpeed);
+//			transform.position += transform.forward * walkSpeed;
 		}
 		if (Input.GetKey (KeyCode.S)) 
 		{
-			transform.position += -transform.forward * walkSpeed;
+			gameObject.GetComponent<Rigidbody> ().AddForce (-transform.forward*walkSpeed);
+//			transform.position += -transform.forward * walkSpeed;
 		}
 		if (Input.GetKey (KeyCode.A)) 
 		{
