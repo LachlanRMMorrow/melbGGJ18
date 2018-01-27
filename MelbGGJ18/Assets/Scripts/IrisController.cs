@@ -34,7 +34,6 @@ public class IrisController : MonoBehaviour
 		RaycastHit lastHit;
 		Physics.Raycast (this.transform.position, transform.TransformDirection(Vector3.forward), out lastHit,8);
 		lastCastHit = lastHit.point;
-//		Debug.Log (lastCastHit);
 	}
 	
 	// Update is called once per frame
@@ -45,10 +44,11 @@ public class IrisController : MonoBehaviour
 
 		//transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 		RayCaster ();
-		if (Input.GetAxis ("Mouse X") > 0f || Input.GetAxis ("Mouse Y") > 0f) 
-		{
-			IrisScaler ();
-		}
+//		IrisScaler ();
+//		if (Input.GetAxis ("Mouse X") > 0f || Input.GetAxis ("Mouse Y") > 0f) 
+//		{
+//			
+//		}
 	}
 	public void IrisScaler ()
 	{
@@ -69,7 +69,7 @@ public class IrisController : MonoBehaviour
 				irisCircle.transform.localScale = irisCircle.transform.localScale * irisMod;
 			}
 		}
-//		Debug.Log (Vector3.Distance (hit.point, targetPos.position));
+		Debug.Log (hit.point.ToString());
 		lastCastHit = hit.point;
 	}
 	public void RayCaster()
@@ -77,5 +77,6 @@ public class IrisController : MonoBehaviour
 		Vector3 fwd = transform.TransformDirection (Vector3.forward);
 
 		Physics.Raycast (this.transform.position, fwd, out hit, 999f);
+//		Debug.DrawRay (this.transform.position, fwd, 999f);
 	}
 }
