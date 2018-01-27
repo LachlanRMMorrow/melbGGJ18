@@ -16,14 +16,6 @@ public class IrisController : MonoBehaviour
 	private float startIrisScale;
 	public float irisMod;
 
-	//float speed = 10.0f;
-
-	//public float speedH = 2.0f;
-	//public float speedV = 2.0f;
-
-	//private float yaw = 0.0f;
-	//private float pitch = 0.0f;
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -39,16 +31,11 @@ public class IrisController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		//yaw += speedH * Input.GetAxis("Mouse X");
-		//pitch -= speedV * Input.GetAxis("Mouse Y");
-
-		//transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 		RayCaster ();
-//		IrisScaler ();
-//		if (Input.GetAxis ("Mouse X") > 0f || Input.GetAxis ("Mouse Y") > 0f) 
-//		{
-//			
-//		}
+		if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.RightArrow)) 
+		{
+			IrisScaler ();
+		}
 	}
 	public void IrisScaler ()
 	{
@@ -57,7 +44,7 @@ public class IrisController : MonoBehaviour
 		{
 			if(irisCircle.transform.localScale.x > 0.2f)
 			{
-				irisMod = 0.9f;
+				irisMod = 0.99f;
 				irisCircle.transform.localScale = irisCircle.transform.localScale * irisMod;
 			}
 		}
@@ -65,18 +52,20 @@ public class IrisController : MonoBehaviour
 		{
 			if (irisCircle.transform.localScale.x < 10f) 
 			{
-				irisMod = 1.1f;
+				irisMod = 1.01f;
 				irisCircle.transform.localScale = irisCircle.transform.localScale * irisMod;
 			}
 		}
-		Debug.Log (hit.point.ToString());
 		lastCastHit = hit.point;
 	}
 	public void RayCaster()
-	{        
-		Vector3 fwd = transform.TransformDirection (Vector3.forward);
+	{
+		Vector3 fwd = transform.TransformDirection (Vector3.forward*100);
 
-		Physics.Raycast (this.transform.position, fwd, out hit, 999f);
-//		Debug.DrawRay (this.transform.position, fwd, 999f);
+		Physics.Raycast (this.transform.position, fwd, out hit,999f);
+		Debug.DrawRay (this.transform.position, fwd, Color.black,1f,false);
+
+		Debug.Log (Vector3.Distance (hit.point, targetPos.position));
+		Debug.Log (hit.collider.gameObject);
 	}
 }
