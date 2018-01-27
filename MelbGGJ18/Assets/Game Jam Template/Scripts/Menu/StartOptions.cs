@@ -15,6 +15,9 @@ public class StartOptions : MonoBehaviour {
     public CanvasGroup fadeOutImageCanvasGroup;                         //Canvas group used to fade alpha of image which fades in before changing scenes
     public Image fadeImage;                                             //Reference to image used to fade out before changing scenes
 
+	public GameObject creditsScreen;
+	public GameObject mainScreen;
+
 	[HideInInspector] public bool inMainMenu = true;					//If true, pause button disabled in main menu (Cancel in input manager, default escape key)
 	[HideInInspector] public AnimationClip fadeAlphaAnimationClip;		//Animation clip fading out UI elements alpha
 
@@ -149,5 +152,15 @@ public class StartOptions : MonoBehaviour {
 		playMusic.FadeUp (fastFadeIn);
 		//Play second music clip from MenuSettings
 		playMusic.PlaySelectedMusic (menuSettingsData.musicLoopToChangeTo);
+	}
+	public void CreditsClicked()
+	{
+		creditsScreen.SetActive (true);
+		mainScreen.SetActive (false);
+	}
+	public void BackClicked()
+	{
+		creditsScreen.SetActive (false);
+		mainScreen.SetActive (true);
 	}
 }
