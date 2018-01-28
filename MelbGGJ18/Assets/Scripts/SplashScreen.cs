@@ -5,6 +5,7 @@ public class SplashScreen : MonoBehaviour
 {
 	private float timer;
 	public float timeToDisplaySplashScreen;
+	public int nextLevelToLoad;
 
 	// Use this for initialization
 	void Start () 
@@ -17,7 +18,7 @@ public class SplashScreen : MonoBehaviour
 	{
 		if (Time.time - timer > timeToDisplaySplashScreen) 
 		{
-			Application.LoadLevel(1);
+			Application.LoadLevel(nextLevelToLoad);
 		}
 	}
 }
